@@ -2,8 +2,8 @@
   "name": "wurrly-client",
   "version": "0.1.0",
   "private": true,
-  "main": "server/server.js",
-  "proxy": "http://localhost:5000/",
+  "main": "server/bin/www",
+  "proxy": "http://localhost:3333/",
   "dependencies": {
     "auth0": "^2.12.0",
     "axios": "^0.18.0",
@@ -23,9 +23,12 @@
     "styled-components": "^3.4.2"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "concurrently \"react-scripts start\" \"node server/bin/www\"",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "concurrently": "^3.6.1"
   }
 }

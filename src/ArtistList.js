@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 import Artist from './Artist';
+import {CONFIG} from './config/config.js';
 
 class ArtistList extends PureComponent {
   state = {
@@ -9,12 +10,13 @@ class ArtistList extends PureComponent {
 
   async componentDidMount() {
     try {
-      const url = require('./data/songs.json');
-      const res = await fetch(url);
+      // const url = require('./data/songs.json');
+      const res = await fetch(`${CONFIG.api.baseUrl}/songs`);
       const artists = await res.json();
-      console.log(artists);
+      console.log([...artists.items]);
+      const newArray = [...artists.items];
       this.setState({
-        artists: artists.results,
+        artists: newArray,
       });
     } catch (error) {
       console.log(error);
@@ -30,6 +32,7 @@ class ArtistList extends PureComponent {
     );
   }
 }
+
 export default ArtistList;
 
 const ArtistGrid = styled.div`
