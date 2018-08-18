@@ -4,16 +4,16 @@ import Artist from './Artist';
 
 class ArtistList extends PureComponent {
   state = {
-    artists: [],
+    items: {},
   }
 
   async componentDidMount() {
     try {
       const res = await fetch('https://s3-us-west-2.amazonaws.com/wurrly-data/test/songs.json');
       const artists = await res.json();
-      console.log(Object.keys(artists));
+      const newObject = artists.items;
       this.setState({
-        artists: artists.items,
+        items: newObject
       });
     } catch (error) {
       console.log(error);
@@ -21,11 +21,10 @@ class ArtistList extends PureComponent {
   }
 
   render() {
-    // console.log(this.state.artists);
-    const artists = this.state.artists;
+    const artists = this.state.items;
     return (
       <ArtistGrid>
-        {artists.map(artist => <Artist key={artist.id} artist={artist.name} />)}
+        {artists.map(artist => <Artist key={artist.artist.id} artist={artist.artist.name} />)}
       </ArtistGrid>
     );
   }

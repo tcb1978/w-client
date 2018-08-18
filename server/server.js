@@ -27,18 +27,9 @@ app.use( (req, res, next) => {
 });
 
 //Endpoint
+const songs = require('../src/json/songs.json');
+app.get('/songs', (req, res) => res.json(songs));
 
-app.get('https://s3-us-west-2.amazonaws.com/wurrly-data/test/songs.json', (req, res) => {
-  // res.status(200).send('https://s3-us-west-2.amazonaws.com/wurrly-data/test/songs.json');
-  return res.status(200).json({});
-})
 
-const db = app.get('db');
-
-massive(process.env.CONNECTION_STRING)
-  .then(db => {
-    app.set('db', db)
-  }).catch((error) => console.error());
-
-	const port = 3333
-	app.listen(port, () => console.log(`Rocking on port ${port}`));
+const port = 3333
+app.listen(port, () => console.log(`Rocking on port ${port}`));
