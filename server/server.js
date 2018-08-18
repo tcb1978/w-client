@@ -1,15 +1,11 @@
 //	DEPENDENCIES
-
-require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
-const massive = require('massive');
 const cors = require('cors');
 
 //Express
 
 const app = express();
-
 
 app.use(bodyParser.json());
 
