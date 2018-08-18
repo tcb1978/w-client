@@ -4,17 +4,17 @@ import Artist from './Artist';
 
 class ArtistList extends PureComponent {
   state = {
-    items: {},
+    artists: [],
   }
 
   async componentDidMount() {
     try {
-      const url = require('./json/songs.json');
+      const url = require('./data/songs.json');
       const res = await fetch(url);
       const artists = await res.json();
-      const newObject = artists.items;
+      console.log(artists);
       this.setState({
-        items: newObject
+        artists: artists.results,
       });
     } catch (error) {
       console.log(error);
@@ -22,10 +22,10 @@ class ArtistList extends PureComponent {
   }
 
   render() {
-    const artists = this.state.items;
+    const artists = this.state.artists;
     return (
       <ArtistGrid>
-        {artists.map(artist => <Artist key={artist.artist.id} artist={artist.artist.name} />)}
+        {/*artists.map(artist => <Artist key={artist.id} movie={artist} />)*/}
       </ArtistGrid>
     );
   }

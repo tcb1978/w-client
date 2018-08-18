@@ -23,7 +23,7 @@ app.use( (req, res, next) => {
 });
 
 //Endpoint
-const songs = require('../src/json/songs.json');
+const songs = require('../src/data/songs.json');
 app.get('/songs', (req, res) => res.json(songs));
 
 
