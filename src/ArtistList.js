@@ -4,14 +4,17 @@ import Artist from './Artist';
 
 class ArtistList extends PureComponent {
   state = {
-    artists: {},
+    items: {},
   }
 
   async componentDidMount() {
     try {
-      const artists = require('whateverPath/songs.json');
+      const url = require('./json/songs.json');
+      const res = await fetch(url);
+      const artists = await res.json();
+      const newObject = artists.items;
       this.setState({
-        artists: artists
+        items: newObject
       });
     } catch (error) {
       console.log(error);
