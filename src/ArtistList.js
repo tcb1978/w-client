@@ -1,31 +1,35 @@
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
-import Artist from './Artist';
+import Song from './Song';
 import {CONFIG} from './config/config.js';
 
 class ArtistList extends PureComponent {
   state = {
-    artists: [],
-  }
+    songs: [],
+  };
 
   async componentDidMount() {
+    if (this.state.songs.length > 0) return;
     try {
       const res = await fetch(`${CONFIG.api.baseUrl}/songs`);
       const artists = await res.json();
       const newArray = [...artists.items];
       this.setState({
-        artists: newArray,
+        songs: newArray,
       });
+      console.log(this.state.songs);
     } catch (error) {
       console.log(error);
     }
   }
 
   render() {
-    const artists = this.state.artists;
+    const artists = this.state.songs;
     return (
       <ArtistGrid>
-          {artists.map((artist, i) => <Artist key={`artist_list_item_${i}`}>{artist.artist.name}</Artist>)}
+          {
+            artists.map((song, i) => <Song key={`artist_list_item_${i}`} song={song}  />)
+          }
       </ArtistGrid>
     );
   }

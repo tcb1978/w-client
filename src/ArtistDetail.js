@@ -1,59 +1,66 @@
 /* eslint react/no-did-mount-set-state: 0 */
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import styled from 'styled-components';
 import {CONFIG} from './config/config.js';
-import { Poster } from './Artist';
+import {Poster} from './Song';
 import Overdrive from 'react-overdrive';
 
 const POSTER_PATH = `${CONFIG.api.baseUrl}/songs`;
 const BACKDROP_PATH = `${CONFIG.api.baseUrl}/songs`;
 
 class ArtistDetail extends Component {
-  state = {
-    artist: {},
-  }
+    state = {
+        song: null
+    };
 
-  async componentDidMount() {
-    try {
-      const res = await fetch(`${BACKDROP_PATH}${artist.imagePath}`);
-      const artist = await res.json();
-      this.setState({
-        artist,
-      });
-    } catch (e) {
-      console.log(e);
+    async componentDidMount() {
+        const {id} = this.props.match.params;
+        try {
+            const res = await fetch(`${BACKDROP_PATH}/${id}`);
+            const song = await res.json();
+            console.log(song);
+            this.setState({
+                song
+            });
+        } catch (e) {
+            console.log(e);
+        }
     }
-  }
 
-  render() {
-    const { artist } = this.state;
-    return (
-      <ArtistWrapper backdrop={`${BACKDROP_PATH}${artist.image_path}`}>
-        <ArtistInfo>
-          <Overdrive id={artist.id}>
-            <Poster src={`${POSTER_PATH}${artist.image_path}`} alt={artist.title} />
-          </Overdrive>
-          <div>
-            {this.state.artist.artist.nam ? (
-              <h1>{artist.title}</h1>
-            ) : (
-              <i>An artist is not currently available for this slection.</i>
-            )}
-            {this.state.artist.available ? (
-              <h3>{artist.available}</h3>
-            ) : (
-              <i>A release date is not currently available for this album.</i>
-            )}
-            {this.state.artist.wurrlyCount ? (
-              <p>{artist.wurrlyCount}</p>
-            ) : (
-              <i>An Wurrly Count is not available for this slection.</i>
-            )}
-          </div>
-        </ArtistInfo>
-      </ArtistWrapper>
-    );
-  }
+    render() {
+
+        if (!this.state.song) {
+            return (<span>loading...</span>);
+        }
+        const {artist, imagePath, title, id, available, wurrlyCount} = this.state.song;
+
+        return (
+            <ArtistWrapper backdrop={`${imagePath}`}>
+                <ArtistInfo>
+                    <Overdrive id={id.toString()}>
+                        <Poster src={imagePath} alt={title}/>
+                    </Overdrive>
+                    <div>
+                        {artist.name ? (
+                            <h1>{title}</h1>
+                        ) : (
+                            <i>An artist is not currently available for this selection.</i>
+                        )}
+                        {available ? (
+                            <h3>{available}</h3>
+                        ) : (
+                            <i>A release date is not currently available for this album.</i>
+                        )}
+                        {wurrlyCount ? (
+                            <p>{wurrlyCount}</p>
+                        ) : (
+                            <i>An Wurrly Count is not available for this slection.</i>
+                        )}
+                    </div>
+                </ArtistInfo>
+            </ArtistWrapper>
+        );
+    }
 }
 
 export default ArtistDetail;
