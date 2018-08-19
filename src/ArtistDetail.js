@@ -36,13 +36,18 @@ class ArtistDetail extends Component {
 
         return (
             <ArtistWrapper backdrop={`${imagePath}`}>
-                <ArtistInfo>
+                <div className="ArtistInfo">
                     <Overdrive id={id.toString()}>
                         <Poster src={imagePath} alt={title}/>
                     </Overdrive>
                     <div>
                         {artist.name ? (
                             <h1>{title}</h1>
+                        ) : (
+                            <i>An artist is not currently available for this selection.</i>
+                        )}
+                        {artist.name ? (
+                            <h1>{artist.name}</h1>
                         ) : (
                             <i>An artist is not currently available for this selection.</i>
                         )}
@@ -57,7 +62,7 @@ class ArtistDetail extends Component {
                             <i>An Wurrly Count is not available for this slection.</i>
                         )}
                     </div>
-                </ArtistInfo>
+                </div>
             </ArtistWrapper>
         );
     }
@@ -67,6 +72,7 @@ export default ArtistDetail;
 
 const ArtistWrapper = styled.div`
   background: url(${props => props.backdrop}) no-repeat;
+  background-position: 0 100%;
   background-size: cover;
   padding-top: 50vh;
   position: relative;
@@ -81,7 +87,7 @@ const ArtistInfo = styled.div`
     margin-left: 20px;
   }
   img {
-    position: rleative;
+    position: relative;
     top: -5rem;
   }
 `;

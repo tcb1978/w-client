@@ -1,28 +1,51 @@
-.App {
-  text-align: center;
+@import './fonts.css';
+
+body {
+  background-color: #ebe9e9;
+  color: #fff;
+  font-family: "Slate W01";
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+
+/* Small */
+
+.ArtistGrid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-row-gap: .75rem;
+  padding: .75rem;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.App>div:first-of-type {
+  padding-top: 20vh;
 }
 
-.App-title {
-  font-size: 1.5em;
+.ArtistInfo div {
+  max-width: 400px;
+  margin: 0 auto;
 }
 
-.App-intro {
-  font-size: large;
+.ArtistInfo div img {
+  width: 100%;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+/* Medium */
+
+@media(min-width: 768px) {
+  .ArtistGrid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+
+  .App>div:first-of-type {
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+    padding-top: 1em;
+  }
+
+  .ArtistInfo {
+    display: flex;
+  }
 }

@@ -26,11 +26,11 @@ class ArtistList extends PureComponent {
   render() {
     const artists = this.state.songs;
     return (
-      <ArtistGrid>
+      <div className="ArtistGrid">
           {
-            artists.map((song, i) => <Song key={`artist_list_item_${i}`} song={song}  />)
+            artists.map((song, i) => <Song className="Song" key={`artist_list_item_${i}`} song={song}  />)
           }
-      </ArtistGrid>
+      </div>
     );
   }
 }
@@ -38,8 +38,7 @@ class ArtistList extends PureComponent {
 export default ArtistList;
 
 const ArtistGrid = styled.div`
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-row-gap: 1rem;
-    padding: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 `;

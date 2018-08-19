@@ -1,0 +1,32 @@
+/* Fonts */
+
+@import url("http://fast.fonts.net/t/1.css?apiType=css&projectid=9b81a360-5c77-4717-9d14-b5b15ccdfac1");
+@font-face {
+  font-family: "ITCModernNo-216W01-Lt";
+  src: url("./fonts/f3b9790e-0828-4ce8-a7d4-7501fc97bab5.eot?#iefix");
+  src: url("./fonts/f3b9790e-0828-4ce8-a7d4-7501fc97bab5.eot?#iefix") format("eot"), url("./fonts/135a2177-0c5b-445b-98cc-c19f5a991e5e.woff2") format("woff2"), url("./fonts/b4c1a2a1-9bce-454e-9939-309da24c1393.woff") format("woff"), url("./fonts/ba969fd7-8a16-4e34-8e6e-270b7938e154.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Slate W01 Light";
+  src: url("./fonts/3dc533c3-745d-41d7-9d0a-165a623cec9b.eot?#iefix");
+  src: url("./fonts/3dc533c3-745d-41d7-9d0a-165a623cec9b.eot?#iefix") format("eot"), url("./fonts/443ceb9a-576f-4f01-8072-1b5e16848faa.woff2") format("woff2"), url("./fonts/8d90dadd-915f-4838-b610-4fb8cad8a324.woff") format("woff"), url("./fonts/90fe9ab9-afc5-43ca-9bb7-564a82045808.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Slate W01";
+  src: url("./fonts/0ccb23cc-e65f-4f1a-adee-23462447a4f9.eot?#iefix");
+  src: url("./fonts/0ccb23cc-e65f-4f1a-adee-23462447a4f9.eot?#iefix") format("eot"), url("./fonts/77c289f3-3401-45a7-b754-9804fe541516.woff2") format("woff2"), url("./fonts/fc86544e-4e5f-4492-a80e-16b5745bb869.woff") format("woff"), url("./fonts/52e5df46-b718-4238-9f2e-c141505a48c3.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Slate W01 Medium Italic";
+  src: url("./fonts/7ebd6be5-d902-4431-9798-f02eb003d771.eot?#iefix");
+  src: url("./fonts/7ebd6be5-d902-4431-9798-f02eb003d771.eot?#iefix") format("eot"), url("./fonts/03034b79-99a1-4817-9fba-d50f4737fbf2.woff2") format("woff2"), url("./fonts/2be5690c-8be4-41d9-90f1-bda9a497f4a5.woff") format("woff"), url("./fonts/914a7465-15fb-4335-b053-d51347db7f70.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "SlateW01-MediumCondense";
+  src: url("./fonts/2561543f-d4cd-4ca7-acb9-295882871a58.eot?#iefix");
+  src: url("./fonts/2561543f-d4cd-4ca7-acb9-295882871a58.eot?#iefix") format("eot"), url("./fonts/14eb5847-5f2b-471a-8adf-229657f0ad13.woff2") format("woff2"), url("./fonts/4d8e4051-9cd9-48ea-9e94-7baa3ac518f6.woff") format("woff"), url("./fonts/4809487a-5ffd-4407-8ade-f722c586c024.ttf") format("truetype");
+}
