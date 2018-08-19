@@ -3,7 +3,6 @@ const router = express.Router();
 const songsData = require('../data/songs.json');
 const royaltiesData = require('../data/royalties.json');
 
-/* GET home page. */
 router.get('/songs', (req, res, next) => {
   const { page = "1",  limit = "50"} = req.query;
 
@@ -19,7 +18,8 @@ router.get('/songs', (req, res, next) => {
     items: songsData.items.slice(startingIndex, endingIndex).map(s => {
       s.imagePath = 'https://www.popsci.com/sites/popsci.com/files/styles/655_1x_/public/images/2017/10/terrier-puppy.jpg?itok=Ppdi06hH&fc=50,50';
       return s
-    })
+    }),
+    total: songsData.items.length
   });
 });
 
