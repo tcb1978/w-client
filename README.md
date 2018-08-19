@@ -9,4 +9,5 @@ I ran out of time to complete the entire exercise.
 Still outstanding items:
 
 - client side pagination
-- set up redux store
+- set up Redux Store or Context API to manage state of which page and how many items
+ 
