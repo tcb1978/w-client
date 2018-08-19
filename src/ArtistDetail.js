@@ -1,11 +1,12 @@
 /* eslint react/no-did-mount-set-state: 0 */
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import {CONFIG} from './config/config.js';
 import { Poster } from './Artist';
 import Overdrive from 'react-overdrive';
 
-const POSTER_PATH = 'https://s3-us-west-2.amazonaws.com/wurrly-data/test/songs.json';
-const BACKDROP_PATH = 'https://s3-us-west-2.amazonaws.com/wurrly-data/test/songs.json';
+const POSTER_PATH = `${CONFIG.api.baseUrl}/songs`;
+const BACKDROP_PATH = `${CONFIG.api.baseUrl}/songs`;
 
 class ArtistDetail extends Component {
   state = {
@@ -14,7 +15,7 @@ class ArtistDetail extends Component {
 
   async componentDidMount() {
     try {
-      const res = await fetch(`https://s3-us-west-2.amazonaws.com/wurrly-data/test/songs.json`);
+      const res = await fetch(`${BACKDROP_PATH}${artist.imagePath}`);
       const artist = await res.json();
       this.setState({
         artist,
@@ -27,26 +28,26 @@ class ArtistDetail extends Component {
   render() {
     const { artist } = this.state;
     return (
-      <ArtistWrapper backdrop={`${BACKDROP_PATH}${artist.backdrop_path}`}>
+      <ArtistWrapper backdrop={`${BACKDROP_PATH}${artist.image_path}`}>
         <ArtistInfo>
           <Overdrive id={artist.id}>
-            <Poster src={`${POSTER_PATH}${artist.poster_path}`} alt={artist.title} />
+            <Poster src={`${POSTER_PATH}${artist.image_path}`} alt={artist.title} />
           </Overdrive>
           <div>
-            {this.state.artist.title ? (
+            {this.state.artist.artist.nam ? (
               <h1>{artist.title}</h1>
             ) : (
-              <i>A title is not currently available for this album.</i>
+              <i>An artist is not currently available for this slection.</i>
             )}
-            {this.state.artist.release_date ? (
-              <h3>{artist.release_date}</h3>
+            {this.state.artist.available ? (
+              <h3>{artist.available}</h3>
             ) : (
               <i>A release date is not currently available for this album.</i>
             )}
-            {this.state.artist.overview ? (
-              <p>{artist.overview}</p>
+            {this.state.artist.wurrlyCount ? (
+              <p>{artist.wurrlyCount}</p>
             ) : (
-              <i>An overview is not available for this album.</i>
+              <i>An Wurrly Count is not available for this slection.</i>
             )}
           </div>
         </ArtistInfo>

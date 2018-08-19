@@ -10,10 +10,8 @@ class ArtistList extends PureComponent {
 
   async componentDidMount() {
     try {
-      // const url = require('./data/songs.json');
       const res = await fetch(`${CONFIG.api.baseUrl}/songs`);
       const artists = await res.json();
-      console.log([...artists.items]);
       const newArray = [...artists.items];
       this.setState({
         artists: newArray,
@@ -27,7 +25,7 @@ class ArtistList extends PureComponent {
     const artists = this.state.artists;
     return (
       <ArtistGrid>
-        {/*artists.map(artist => <Artist key={artist.id} movie={artist} />)*/}
+          {artists.map((artist, i) => <Artist key={`artist_list_item_${i}`}>{artist.artist.name}</Artist>)}
       </ArtistGrid>
     );
   }
